@@ -1,12 +1,21 @@
 "use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const [yesSize, setYesSize] = useState(1);
+  const [noCount, setNoCount] = useState(0);
+   const router = useRouter();
+
   const yesClick = () => {
-    alert("Yay! 💖🥰");
+    router.push("/yes"); 
   };
 
   const noClick = () => {
-    alert("😢 Try again...");
+    if (noCount < 3) {
+      setYesSize((prev) => prev + 0.5); 
+      setNoCount((prev) => prev + 1);
+    }
   };
 
   return (
@@ -16,16 +25,15 @@ export default function Page() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-
         fontFamily: "Arial, sans-serif",
       }}
     >
       <div style={{ textAlign: "center", color: "white" }}>
-        <h1 style={{ fontSize: "42px", marginBottom: "30px" }}>
+        <h1 style={{ fontSize: "40px", marginBottom: "70px" }}>
           <span style={{ opacity: 0.7 }}>私の彼女になってくれますか？</span>
         </h1>
 
-        <div style={{ marginBottom: "30px" }}>
+        <div style={{ marginBottom: "30px"}}>
           <button
             onClick={yesClick}
             style={{
@@ -37,40 +45,30 @@ export default function Page() {
               backgroundColor: "#7b2c3b",
               color: "white",
               cursor: "pointer",
+              transform: `scale(${yesSize})`,
+              transition: "transform 0.3s ease",
             }}
           >
             YES!
           </button>
 
-          <button
-            onClick={noClick}
-            style={{
-              fontSize: "24px",
-              padding: "15px 40px",
-              margin: "10px",
-              border: "none",
-              borderRadius: "10px",
-              backgroundColor: "#d63b3b",
-              color: "white",
-              cursor: "pointer",
-            }}
-          >
-            no.
-          </button>
-        </div>
-
-        <img
-          src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif"
-          alt="funny gif"
-          style={{
-            width: "220px",
-            borderRadius: "10px",
-            marginTop: "20px",
-          }}
-        />
-
-        <div style={{ marginTop: "20px", fontSize: "14px", opacity: 0.8 }}>
-          bemygirlfriend.netlify.app
+          {noCount < 3 && (
+            <button
+              onClick={noClick}
+              style={{
+                fontSize: "24px",
+                padding: "15px 40px",
+                margin: "10px",
+                border: "none",
+                borderRadius: "10px",
+                backgroundColor: "#d63b3b",
+                color: "white",
+                cursor: "pointer",
+              }}
+            >
+              no.
+            </button>
+          )}
         </div>
       </div>
     </main>

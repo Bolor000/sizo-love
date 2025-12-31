@@ -1,21 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { push } = useRouter();
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://tenor.com/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-6">
@@ -23,13 +11,11 @@ export default function Home() {
         Сайн уу? ХӨӨРХӨНӨӨ 💗
       </div>
 
-      <div className="w-40 md:w-56 lg:w-64">
-        <div
-          className="tenor-gif-embed"
-          data-postid="27417116"
-          data-share-method="host"
-          data-aspect-ratio="1"
-          data-width="100%"
+      <div className="w-60 md:w-56 lg:w-64">
+        <img
+          src="/sweet-hi.gif"
+          alt="Sweet Hi"
+          className="w-full h-auto"
         />
       </div>
 
@@ -40,7 +26,7 @@ export default function Home() {
         ❤️ Heart
       </button>
 
-      <div className="text-center opacity-80">
+      <div className="text-center opacity-80 pr-7 pl-7">
         одооноос дандаа энэ зүрхийг дарна шүү хөөрхөнөө
       </div>
     </div>

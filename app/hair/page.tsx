@@ -11,7 +11,7 @@ export default function Home() {
     <div className="container">
       {!open && (
         <>
-          <p className="hint">Зүрхэн дээр дараад үздэээ 🥰</p>
+          <p className="text-xl hint">Зүрхэн дээр дараад үздэээ 🥰</p>
           <div className="heart" onClick={() => setOpen(true)}>
             ❤️
           </div>
@@ -56,7 +56,7 @@ export default function Home() {
           <div className="small-heart">❤️</div>
           <button
             onClick={() => push("/last")}
-            className="flex pl-70 text-pink-950"
+            className="flex pl-50 text-pink-950"
           >
             ｡ﾟﾟ･｡･ﾟﾟ｡ ﾟ。 энд дараарай
           </button>
